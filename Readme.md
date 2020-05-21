@@ -1,4 +1,4 @@
-# Virtualprinter to DPT-RP1 unsing tea4cups
+# Virtual printer for Sony digital paper (DPT-RP1) using tea4cups
 
 A simple virtual printer that prints directly to your Sony DPT-RP1 through wifi or bluetooth.
 
