@@ -15,7 +15,7 @@ First you need to edit the file `config.conf` and add the wifi/bluetooth address
 ```
 address=192.168.1.100
 client=/full/path/to/deviceid.dat
-key=/full/path/to/.dpapp/privatekey.dat
+key=/full/path/to/privatekey.dat
 ```
 
 In the same file you can define a name for the virtual printer setting the variable `printername` (defaults to "PrintToDPT").
