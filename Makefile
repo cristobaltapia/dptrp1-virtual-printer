@@ -22,7 +22,7 @@ install:
 
 configure:
 	sed -i 's/^DPTADDR=.*$$/DPTADDR=$(address)/' print-to-dpt.sh
-	sed -i 's;^installdir=?*$$;installdir=$(installdir);' print-to-dpt.sh
+	sed -i 's;^installdir=.*$$;installdir=$(installdir);' print-to-dpt.sh
 	@echo "DPT printer configured."
 
 update-config:
