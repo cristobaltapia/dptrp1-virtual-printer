@@ -10,20 +10,17 @@ This virtual printer requires the following programs to work:
 
 ## Installation
 
-First you need to edit the file `config.conf` and add the wifi/bluetooth address and full paths to your "deviceid" and "privatekey" files (these are the same files needed by dpt-rp1-py, so make sure you have correctly configured that first).
+First you need to create a configuration file `config.conf` under `$XDG_CONFIG_HOME/dpt-virtual-printer/` and add the wifi/bluetooth address and full paths to your "deviceid" and "privatekey" files (these are the same files needed by dpt-rp1-py, so make sure you have correctly configured that first).
 
 ```
-address=192.168.1.100
-client=/full/path/to/deviceid.dat
-key=/full/path/to/privatekey.dat
+dptaddr=192.168.1.100
+deviceid=/full/path/to/deviceid.dat
+devicekey=/full/path/to/privatekey.dat
 ```
 
-In the same file you can define a name for the virtual printer setting the variable `printername` (defaults to "PrintToDPT").
-
-
-Then configure it with
+In the same file you can define the path to the location of the script `dptrp1` (defaults to `/usr/local/bin/dptrp1`)
 ```
-make configure
+dptrp1=/usr/local/bin/dptrp1
 ```
 
 And install the virtual printer with
@@ -36,8 +33,3 @@ Done.
 
 ![printer list](printer-list.png)
 
-## Issues
-
-At the time, it is only possible to configure _one_ DPT-RP1 device, as the "deviceid" and "privatekey" files are copied to the installation directory.
-This is so, because I don't know how to make a program executed by CUPS to have read access to the files in the user `$HOME` directory.
-If you know how to do this, please open an issue or a PR.

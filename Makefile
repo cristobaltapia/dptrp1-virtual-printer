@@ -12,8 +12,6 @@ install:
 	mkdir -p $(installdir)
 	install print-to-dpt.sh $(installdir)/print-to-dptrp1.sh
 	@chmod +x $(installdir)/print-to-dptrp1.sh
-	install $(client) $(installdir)/deviceid.dat
-	install $(key) $(installdir)/privatekey.dat
 	@echo "  Installing virtual printer..."
 	lpadmin -p $(printername) -v tea4cups:// -E -m raw
 	@echo "  Configuring tea4cups..."
@@ -27,16 +25,12 @@ configure:
 
 update-config:
 	sed -i 's/^DPTADDR=.*$$/DPTADDR=$(address)/' $(installdir)/print-to-dpt.sh
-	install $(client) $(installdir)/deviceid.dat
-	install $(key) $(installdir)/privatekey.dat
 	@echo "DPT configuration updated."
 
 uninstall:
 	@echo "Uninstalling DPT virtual printer..."
 	@echo "  Removing files..."
 	rm $(installdir)/print-to-dptrp1.sh
-	rm $(installdir)/deviceid.dat
-	rm $(installdir)/privatekey.dat
 	rm -r $(installdir)
 	@echo "  Configuring tea4cups..."
 	sed -i '/$(printername)/,/^/d' $(tea4cupsconf)

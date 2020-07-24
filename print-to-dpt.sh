@@ -5,15 +5,27 @@ MIMETYPE=$(file --mime-type -b "$TEADATAFILE")
 
 # Directory for the output file.
 DIR="/tmp/PDF"
-#INSTALLDIR=/opt/dptrp1-printer
-
 CF1=cupsfilter
 CF2="cupsfilter -m application/vnd.cups-pdf -o"
 TU="$TEAUSERNAME"
 TD="$TEADATAFILE"
 
-DPTADDR=192.168.1.100
-installdir=
+CONFIG_DIR=/home/${TU}/.config/dpt-virtual-printer
+
+# Check if configuration file exists
+if [ ! -e "$CONFIG_DIR" ] ; then
+  mkdir ${CONFIG_DIR}
+  chown "$TU":"$TU" "$CONFIG_DIR"
+  CONTENT = "dptaddr=0.0.0.0\ndeviceid=path/to/deviceid.dat\ndevicekey=path/to/privatekey.dat" \ 
+    > ${CONFIG_DIR}/config
+  chown "$TU":"$TU" "$CONFIG_DIR/config"
+else
+  # ${DPTADDR} is sourced here
+  source ${CONFIG_DIR}/config
+fi
+
+# Default configurations
+dptrp1=${dptrp1:-/usr/local/bin/dptrp1}
 
 # Get any page-ranges. Useful for jobs submitted with lp but not for
 # jobs from most GTK/QT apps. The latter pre-process jobs to sort out
@@ -87,9 +99,7 @@ case "$MIMETYPE" in
    application/postscript) print_ps
 esac
 
-dptrp1 --addr=${DPTADDR} \
-    --client=${installdir}/deviceid.dat \
-    --key=${installdir}/privatekey.dat \
+${dptrp1} --addr=${dptaddr} --client-id=${deviceid} --key=${devicekey} \
     upload "$DIR/$PDF" Document/Printed/$PDF
 
 exit 0

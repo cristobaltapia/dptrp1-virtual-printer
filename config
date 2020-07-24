@@ -1,0 +1,5 @@
+# Configure before installing
+address=172.25.47.1
+deviceid=/path/to/deviceid.dat
+devicekey=/path/to/devicekey.dat
+dptrp1=/usr/local/bin/dptrp1
