@@ -10,6 +10,17 @@ This virtual printer requires the following programs to work:
 
 ## Installation
 
+Install the virtual printer with
+```
+sudo make install
+```
+
+You can now find your new virtual printer listed in the print dialog.
+
+![printer list](printer-list.png)
+
+## Configuration
+
 First you need to create a configuration file `config.conf` under `$XDG_CONFIG_HOME/dpt-virtual-printer/` and add the wifi/bluetooth address and full paths to your "deviceid" and "privatekey" files (these are the same files needed by dpt-rp1-py, so make sure you have correctly configured that first).
 
 ```
@@ -23,13 +34,4 @@ In the same file you can define the path to the location of the script `dptrp1` 
 dptrp1=/usr/local/bin/dptrp1
 ```
 
-And install the virtual printer with
-```
-sudo make install
-```
-
-You can now find your new virtual printer listed in the print dialog.
 Done.
-
-![printer list](printer-list.png)
-
