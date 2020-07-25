@@ -1,5 +1,3 @@
-include config.conf
-
 .PHONY: install
 
 installdir=/opt/sony-dpt-printer
