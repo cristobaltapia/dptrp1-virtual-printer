@@ -1,5 +1,7 @@
 # Virtual printer for Sony digital paper (DPT-RP1)
 
+_This repository has been archieved. I made a new implementation in [dptrp1-cups](https://github.com/cristobaltapia/dptrp1-cups)_
+
 A simple virtual printer that prints directly to your Sony DPT-RP1 through wifi or bluetooth.
 
 ## Requirements
